@@ -83,10 +83,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B10-kA-Knr">
-                                <rect key="frame" x="42" y="595" width="356" height="191"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B10-kA-Knr">
+                                <rect key="frame" x="42" y="592" width="356" height="191"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="191" id="27z-wa-VfA"/>
+                                    <constraint firstAttribute="width" constant="356" id="cLK-gs-uMW"/>
+                                </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -100,6 +103,7 @@
                             <constraint firstItem="4VA-Oo-IRs" firstAttribute="width" secondItem="wUA-Di-5Au" secondAttribute="width" id="1ll-n5-Blv"/>
                             <constraint firstItem="BH1-0L-dM5" firstAttribute="top" secondItem="CLm-Y2-hQx" secondAttribute="bottom" constant="41" id="2PX-cY-tpU"/>
                             <constraint firstItem="bMi-H6-pQL" firstAttribute="leading" secondItem="1Mv-Tz-DMW" secondAttribute="leading" id="8hs-oG-tgE"/>
+                            <constraint firstItem="B10-kA-Knr" firstAttribute="centerX" secondItem="2oj-cb-q8v" secondAttribute="centerX" id="9VU-0r-eib"/>
                             <constraint firstItem="BH1-0L-dM5" firstAttribute="leading" secondItem="1Mv-Tz-DMW" secondAttribute="leading" id="Ace-rl-bl6"/>
                             <constraint firstItem="bQJ-Dx-6rX" firstAttribute="top" secondItem="KVh-p9-foZ" secondAttribute="bottom" constant="30" id="Aog-pb-lvw"/>
                             <constraint firstItem="bMi-H6-pQL" firstAttribute="top" secondItem="bQJ-Dx-6rX" secondAttribute="bottom" constant="30" id="FT3-kI-KHB"/>
@@ -127,6 +131,7 @@
                             <constraint firstItem="fdj-Mc-rwa" firstAttribute="top" secondItem="4kr-cX-OLm" secondAttribute="top" constant="64" id="vbs-Lz-PVA"/>
                             <constraint firstItem="4kr-cX-OLm" firstAttribute="trailing" secondItem="wUA-Di-5Au" secondAttribute="trailing" constant="42" id="yOx-En-Mc8"/>
                             <constraint firstItem="1Ot-4e-KaK" firstAttribute="width" secondItem="wUA-Di-5Au" secondAttribute="width" id="zLh-jf-jxN"/>
+                            <constraint firstItem="B10-kA-Knr" firstAttribute="top" secondItem="BH1-0L-dM5" secondAttribute="bottom" constant="5" id="zYT-Jm-hvd"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="New Contact" image="person.crop.circle.fill.badge.plus" id="dkm-5O-QyA" userLabel="EnterNew"/>
@@ -145,14 +150,38 @@
                     <view key="view" contentMode="scaleToFill" id="Eb2-BV-Oeu">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jesse Crocker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bok-Ib-dsQ">
+                                <rect key="frame" x="91" y="457" width="258" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="8cA-kP-bvY"/>
+                                    <constraint firstAttribute="width" constant="258" id="Ehs-tm-V9h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MOBI3001 - March 28th, 2026" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUb-hd-QT8">
+                                <rect key="frame" x="103" y="514" width="234" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="8Y2-NU-788"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WUb-hd-QT8" firstAttribute="top" secondItem="Bok-Ib-dsQ" secondAttribute="bottom" constant="15" id="342-2v-F1B"/>
+                            <constraint firstItem="Bok-Ib-dsQ" firstAttribute="centerY" secondItem="Eb2-BV-Oeu" secondAttribute="centerY" id="Vio-T5-crH"/>
+                            <constraint firstItem="WUb-hd-QT8" firstAttribute="centerX" secondItem="Eb2-BV-Oeu" secondAttribute="centerX" id="Wnu-z3-LH9"/>
+                            <constraint firstItem="Bok-Ib-dsQ" firstAttribute="centerX" secondItem="Eb2-BV-Oeu" secondAttribute="centerX" id="jYq-n1-VNd"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="About" image="info.circle.fill" id="0zM-8u-XjR" userLabel="Credits"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tBV-RI-mXC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="104" y="968"/>
+            <point key="canvasLocation" x="103.63636363636364" y="967.78242677824267"/>
         </scene>
         <!--ViewTable-->
         <scene sceneID="hp0-6M-Gkb">
@@ -192,14 +221,35 @@
                     <view key="view" contentMode="scaleToFill" id="Br1-UW-336">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NSCC" translatesAutoresizingMaskIntoConstraints="NO" id="zzP-4P-5Sj" userLabel="ivwNSCCImage">
+                                <rect key="frame" x="43.666666666666657" y="432.66666666666669" width="353" height="91.000000000000057"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="91" id="4Xq-cq-OS6"/>
+                                    <constraint firstAttribute="width" constant="353" id="Lpw-LL-QDl"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Syr-sZ-umb" userLabel="lblContactsApp">
+                                <rect key="frame" x="43.666666666666657" y="528.66666666666663" width="260" height="51"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="42"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="74N-NN-hfl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Syr-sZ-umb" firstAttribute="leading" secondItem="zzP-4P-5Sj" secondAttribute="leading" id="7F5-AH-Nkf"/>
+                            <constraint firstItem="zzP-4P-5Sj" firstAttribute="centerY" secondItem="Br1-UW-336" secondAttribute="centerY" id="CGr-VD-r2g"/>
+                            <constraint firstItem="zzP-4P-5Sj" firstAttribute="centerX" secondItem="Br1-UW-336" secondAttribute="centerX" id="Del-R8-ynk"/>
+                            <constraint firstItem="Syr-sZ-umb" firstAttribute="top" secondItem="zzP-4P-5Sj" secondAttribute="bottom" constant="5" id="dp8-8Y-POM"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house.circle.fill" id="SbM-80-Nes" userLabel="HomeSplash"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BUY-dj-Jds" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="104" y="-1192"/>
+            <point key="canvasLocation" x="103.63636363636364" y="-1192.4686192468619"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="VRr-7c-G2e">
@@ -223,6 +273,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NSCC" width="1144" height="266.66665649414062"/>
         <image name="house.circle.fill" width="20.283199310302734" height="19.931600570678711"/>
         <image name="info.circle.fill" width="20.283199310302734" height="19.931600570678711"/>
         <image name="person.2.circle.fill" width="20.283199310302734" height="19.931600570678711"/>

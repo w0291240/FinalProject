@@ -39,7 +39,28 @@ class InputViewController: UIViewController {
     }
     
     @IBAction func btnSavePressed(_ sender: UIButton) {
+        var saveMsg = "Save Contact?"
         
+        let controller = UIAlertController(title: "Save", message: saveMsg, preferredStyle: .alert)
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+        let saveButton = UIAlertAction(title: "Clear", style: .default) { (action) in
+            let database = self.openDatabase()
+            
+            if self.tfFirstName.text != "" {
+                self.insert(
+                    firstName: self.tfFirstName.text!,
+                    lastName: self.tfLastName.text!,
+                    email: self.tfEmail.text!,
+                    address: self.tfAddress.text!,
+                    phone: self.tfPhone.text!,
+                    notes: self.tvNotes.text!,
+                    db: database!)
+            }
+            self.clearFields();
+        }
+        controller.addAction(cancelButton)
+        controller.addAction(saveButton)
+        self.present(controller, animated: true)
     }
     
     func clearFields() {
@@ -107,7 +128,7 @@ class InputViewController: UIViewController {
         
     }
 
-    func insert(firstName: String, lastName: String, email: String, address: String, phone: String, db: OpaquePointer) {
+    func insert(firstName: String, lastName: String, email: String, address: String, phone: String, notes:String, db: OpaquePointer) {
         let insertSQL = "INSERT INTO Courses(FirstName, LastName, Email, Address, Phone) VALUES (?,?,?,?)"
         var insertQuery: OpaquePointer? = nil
         var insertMsg = ""
@@ -119,6 +140,7 @@ class InputViewController: UIViewController {
             sqlite3_bind_text(insertQuery, 3, (email as NSString).utf8String, -1, nil)
             sqlite3_bind_text(insertQuery, 4, (address as NSString).utf8String, -1, nil)
             sqlite3_bind_text(insertQuery, 5, (phone as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertQuery, 6, (notes as NSString).utf8String, -1, nil)
             
 
             if sqlite3_step(insertQuery) == SQLITE_DONE {

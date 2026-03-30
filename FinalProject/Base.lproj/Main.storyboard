@@ -17,74 +17,75 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Mv-Tz-DMW" userLabel="lblFirstName">
-                                <rect key="frame" x="42" y="289" width="83" height="21"/>
+                                <rect key="frame" x="42" y="257" width="83" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Contact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdj-Mc-rwa" userLabel="lblFirstName">
-                                <rect key="frame" x="102.66666666666669" y="188" width="235" height="48"/>
+                                <rect key="frame" x="102.66666666666669" y="156" width="235" height="48"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVh-p9-foZ" userLabel="lblLastName">
-                                <rect key="frame" x="42" y="340" width="82" height="21"/>
+                                <rect key="frame" x="42" y="308" width="82" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQJ-Dx-6rX" userLabel="lblEmail">
-                                <rect key="frame" x="42" y="391" width="41" height="21"/>
+                                <rect key="frame" x="42" y="359" width="41" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMi-H6-pQL" userLabel="lblAddress">
-                                <rect key="frame" x="42" y="442" width="63" height="21"/>
+                                <rect key="frame" x="42" y="410" width="63" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLm-Y2-hQx" userLabel="lblPhone">
-                                <rect key="frame" x="42" y="493" width="49" height="21"/>
+                                <rect key="frame" x="42" y="461" width="49" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eGm-bW-RpU">
-                                <rect key="frame" x="147" y="333.66666666666669" width="251" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="family-name"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pSS-Jx-4cH">
-                                <rect key="frame" x="147" y="384.66666666666669" width="251" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="email"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Enter Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Ot-4e-KaK">
-                                <rect key="frame" x="147" y="486.66666666666669" width="251" height="34.000000000000057"/>
-                                <attributedString key="attributedText"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Home Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4VA-Oo-IRs">
-                                <rect key="frame" x="147" y="435.66666666666669" width="251" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="street-address"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wUA-Di-5Au">
-                                <rect key="frame" x="147" y="282.66666666666669" width="251" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="given-name"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BH1-0L-dM5" userLabel="lblNotes">
-                                <rect key="frame" x="42" y="555" width="67" height="32"/>
+                                <rect key="frame" x="42" y="523" width="67" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B10-kA-Knr">
-                                <rect key="frame" x="42" y="592" width="356" height="191"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wUA-Di-5Au" userLabel="tfFirstName">
+                                <rect key="frame" x="147" y="250.66666666666663" width="251" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="given-name"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eGm-bW-RpU" userLabel="tfLastName">
+                                <rect key="frame" x="147" y="301.66666666666669" width="251" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="family-name"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pSS-Jx-4cH" userLabel="tfEmail">
+                                <rect key="frame" x="147" y="352.66666666666669" width="251" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Home Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4VA-Oo-IRs" userLabel="tfAddress">
+                                <rect key="frame" x="147" y="403.66666666666669" width="251" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="street-address"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Ot-4e-KaK" userLabel="tfPhone">
+                                <rect key="frame" x="147" y="454.66666666666669" width="251" height="34"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B10-kA-Knr" userLabel="tvNotes">
+                                <rect key="frame" x="42" y="560" width="356" height="191"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="191" id="27z-wa-VfA"/>
@@ -96,9 +97,26 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" shipmentTrackingNumber="YES"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o67-W2-Ky9">
+                                <rect key="frame" x="337" y="784" width="61" height="41"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Save"/>
+                                <connections>
+                                    <action selector="btnClearPressed:" destination="jfp-iw-IAy" eventType="touchUpInside" id="pTr-iU-wpR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhk-q8-qHf">
+                                <rect key="frame" x="42" y="784" width="64" height="41"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Clear"/>
+                                <connections>
+                                    <action selector="btnClearPressed:" destination="jfp-iw-IAy" eventType="touchUpInside" id="21p-U2-UgP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4kr-cX-OLm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="4VA-Oo-IRs" firstAttribute="width" secondItem="wUA-Di-5Au" secondAttribute="width" id="1ll-n5-Blv"/>
                             <constraint firstItem="BH1-0L-dM5" firstAttribute="top" secondItem="CLm-Y2-hQx" secondAttribute="bottom" constant="41" id="2PX-cY-tpU"/>
@@ -106,14 +124,17 @@
                             <constraint firstItem="B10-kA-Knr" firstAttribute="centerX" secondItem="2oj-cb-q8v" secondAttribute="centerX" id="9VU-0r-eib"/>
                             <constraint firstItem="BH1-0L-dM5" firstAttribute="leading" secondItem="1Mv-Tz-DMW" secondAttribute="leading" id="Ace-rl-bl6"/>
                             <constraint firstItem="bQJ-Dx-6rX" firstAttribute="top" secondItem="KVh-p9-foZ" secondAttribute="bottom" constant="30" id="Aog-pb-lvw"/>
+                            <constraint firstItem="hhk-q8-qHf" firstAttribute="leading" secondItem="B10-kA-Knr" secondAttribute="leading" id="D2E-yy-6Ir"/>
                             <constraint firstItem="bMi-H6-pQL" firstAttribute="top" secondItem="bQJ-Dx-6rX" secondAttribute="bottom" constant="30" id="FT3-kI-KHB"/>
                             <constraint firstItem="CLm-Y2-hQx" firstAttribute="top" secondItem="bMi-H6-pQL" secondAttribute="bottom" constant="30" id="IFq-yY-rC4"/>
+                            <constraint firstItem="o67-W2-Ky9" firstAttribute="trailing" secondItem="B10-kA-Knr" secondAttribute="trailing" id="IcU-i0-FqZ"/>
                             <constraint firstItem="KVh-p9-foZ" firstAttribute="leading" secondItem="1Mv-Tz-DMW" secondAttribute="leading" id="NVa-b8-0Uo"/>
                             <constraint firstItem="eGm-bW-RpU" firstAttribute="centerY" secondItem="KVh-p9-foZ" secondAttribute="centerY" id="PtO-is-Dgh"/>
                             <constraint firstItem="pSS-Jx-4cH" firstAttribute="centerY" secondItem="bQJ-Dx-6rX" secondAttribute="centerY" id="RnF-XF-WJz"/>
                             <constraint firstItem="eGm-bW-RpU" firstAttribute="width" secondItem="wUA-Di-5Au" secondAttribute="width" id="SLr-f2-YTa"/>
                             <constraint firstItem="wUA-Di-5Au" firstAttribute="leading" secondItem="1Mv-Tz-DMW" secondAttribute="trailing" constant="22" id="Se5-yJ-qec"/>
                             <constraint firstItem="eGm-bW-RpU" firstAttribute="centerX" secondItem="wUA-Di-5Au" secondAttribute="centerX" id="Tmu-Hp-JgI"/>
+                            <constraint firstItem="hhk-q8-qHf" firstAttribute="top" secondItem="B10-kA-Knr" secondAttribute="bottom" constant="33" id="ZkG-OF-Nyr"/>
                             <constraint firstItem="1Ot-4e-KaK" firstAttribute="centerX" secondItem="wUA-Di-5Au" secondAttribute="centerX" id="aU2-Xc-RRr"/>
                             <constraint firstItem="CLm-Y2-hQx" firstAttribute="leading" secondItem="1Mv-Tz-DMW" secondAttribute="leading" id="b7g-qE-hwp"/>
                             <constraint firstItem="wUA-Di-5Au" firstAttribute="centerY" secondItem="1Mv-Tz-DMW" secondAttribute="centerY" id="bm9-K6-D4a"/>
@@ -121,6 +142,7 @@
                             <constraint firstItem="pSS-Jx-4cH" firstAttribute="centerX" secondItem="wUA-Di-5Au" secondAttribute="centerX" id="ddt-R2-tDK"/>
                             <constraint firstItem="1Mv-Tz-DMW" firstAttribute="leading" secondItem="4kr-cX-OLm" secondAttribute="leading" constant="42" id="g6M-4E-mBf"/>
                             <constraint firstItem="1Mv-Tz-DMW" firstAttribute="top" secondItem="fdj-Mc-rwa" secondAttribute="bottom" constant="53" id="hbP-M6-Sx0"/>
+                            <constraint firstItem="o67-W2-Ky9" firstAttribute="top" secondItem="B10-kA-Knr" secondAttribute="bottom" constant="33" id="hxn-rN-H8Z"/>
                             <constraint firstItem="4VA-Oo-IRs" firstAttribute="centerX" secondItem="wUA-Di-5Au" secondAttribute="centerX" id="j3b-lL-n7g"/>
                             <constraint firstItem="KVh-p9-foZ" firstAttribute="top" secondItem="1Mv-Tz-DMW" secondAttribute="bottom" constant="30" id="pKn-A7-2Tq"/>
                             <constraint firstItem="bQJ-Dx-6rX" firstAttribute="leading" secondItem="1Mv-Tz-DMW" secondAttribute="leading" id="pZQ-MF-qm0"/>
@@ -128,18 +150,32 @@
                             <constraint firstItem="fdj-Mc-rwa" firstAttribute="centerX" secondItem="2oj-cb-q8v" secondAttribute="centerX" id="tLQ-rY-DfA"/>
                             <constraint firstItem="pSS-Jx-4cH" firstAttribute="centerX" secondItem="eGm-bW-RpU" secondAttribute="centerX" id="tqe-CK-gnW"/>
                             <constraint firstItem="4VA-Oo-IRs" firstAttribute="centerY" secondItem="bMi-H6-pQL" secondAttribute="centerY" id="uwy-Wa-JbX"/>
-                            <constraint firstItem="fdj-Mc-rwa" firstAttribute="top" secondItem="4kr-cX-OLm" secondAttribute="top" constant="64" id="vbs-Lz-PVA"/>
+                            <constraint firstItem="fdj-Mc-rwa" firstAttribute="top" secondItem="4kr-cX-OLm" secondAttribute="top" constant="32" id="vbs-Lz-PVA"/>
                             <constraint firstItem="4kr-cX-OLm" firstAttribute="trailing" secondItem="wUA-Di-5Au" secondAttribute="trailing" constant="42" id="yOx-En-Mc8"/>
                             <constraint firstItem="1Ot-4e-KaK" firstAttribute="width" secondItem="wUA-Di-5Au" secondAttribute="width" id="zLh-jf-jxN"/>
                             <constraint firstItem="B10-kA-Knr" firstAttribute="top" secondItem="BH1-0L-dM5" secondAttribute="bottom" constant="5" id="zYT-Jm-hvd"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="uEa-Vc-2Ls" appends="YES" id="hm5-FZ-Npw"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="New Contact" image="person.crop.circle.fill.badge.plus" id="dkm-5O-QyA" userLabel="EnterNew"/>
                     <connections>
                         <outlet property="textView" destination="B10-kA-Knr" id="ZW3-pp-6Ce"/>
+                        <outlet property="tfAddress" destination="4VA-Oo-IRs" id="fQr-fR-2mZ"/>
+                        <outlet property="tfEmail" destination="pSS-Jx-4cH" id="lqz-XX-fuW"/>
+                        <outlet property="tfFirstName" destination="wUA-Di-5Au" id="rq7-18-wen"/>
+                        <outlet property="tfLastName" destination="eGm-bW-RpU" id="P91-uO-6UN"/>
+                        <outlet property="tfPhone" destination="1Ot-4e-KaK" id="XJX-pm-9KR"/>
+                        <outlet property="tvNotes" destination="B10-kA-Knr" id="Ege-ZY-e3f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jlm-2L-s7o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="uEa-Vc-2Ls">
+                    <connections>
+                        <action selector="screenTapped:" destination="jfp-iw-IAy" id="qNt-m5-mbH"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="103.63636363636364" y="-523.43096234309621"/>
         </scene>

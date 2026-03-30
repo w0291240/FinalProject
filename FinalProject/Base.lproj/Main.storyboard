@@ -80,7 +80,6 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Ot-4e-KaK" userLabel="tfPhone">
                                 <rect key="frame" x="147" y="454.66666666666669" width="251" height="34"/>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
                             </textField>
@@ -161,7 +160,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="New Contact" image="person.crop.circle.fill.badge.plus" id="dkm-5O-QyA" userLabel="EnterNew"/>
                     <connections>
-                        <outlet property="textView" destination="B10-kA-Knr" id="ZW3-pp-6Ce"/>
                         <outlet property="tfAddress" destination="4VA-Oo-IRs" id="fQr-fR-2mZ"/>
                         <outlet property="tfEmail" destination="pSS-Jx-4cH" id="lqz-XX-fuW"/>
                         <outlet property="tfFirstName" destination="wUA-Di-5Au" id="rq7-18-wen"/>

@@ -108,7 +108,7 @@ class InputViewController: UIViewController {
     }
 
     func insert(firstName: String, lastName: String, email: String, address: String, phone: String, db: OpaquePointer) {
-        let insertSQL = "INSERT INTO Courses(courseCode, courseName, courseHours, instructorName) VALUES (?,?,?,?)"
+        let insertSQL = "INSERT INTO Courses(FirstName, LastName, Email, Address, Phone) VALUES (?,?,?,?)"
         var insertQuery: OpaquePointer? = nil
         var insertMsg = ""
 

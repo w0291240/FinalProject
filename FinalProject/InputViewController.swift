@@ -21,13 +21,6 @@ class InputViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.textView.layer.borderWidth = 1;
-//        self.textView.layer.backgroundColor = CGColor(red: 0, green: 100, blue: 0, alpha: 1)
-//        self.textView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 5, right: 5)
-//        
-//        self.textView.layer.cornerRadius = 6;
-
-        // Do any additional setup after loading the view.
     }
     @IBAction func screenTapped(_ sender: UITapGestureRecognizer) {
         tfFirstName.resignFirstResponder();
@@ -38,12 +31,12 @@ class InputViewController: UIViewController {
         tvNotes.resignFirstResponder();
     }
     
-    @IBAction func btnSavePressed(_ sender: UIButton) {
-        var saveMsg = "Save Contact?"
+    @IBAction func btnSave(_ sender: UIButton) {
+        let saveMsg = "Save Contact?"
         
         let controller = UIAlertController(title: "Save", message: saveMsg, preferredStyle: .alert)
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
-        let saveButton = UIAlertAction(title: "Clear", style: .default) { (action) in
+        let saveButton = UIAlertAction(title: "Save", style: .default) { (action) in
             let database = self.openDatabase()
             
             if self.tfFirstName.text != "" {
@@ -71,11 +64,12 @@ class InputViewController: UIViewController {
         tfPhone.text = ""
         tvNotes.text = ""
     }
+
     
     
     @IBAction func btnClearPressed(_ sender: UIButton) {
         
-        var clearMsg = "Are you sure you want to clear all fields?"
+        let clearMsg = "Are you sure you want to clear all fields?"
         
         let controller = UIAlertController(title: "Clear", message: clearMsg, preferredStyle: .alert)
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
@@ -129,7 +123,7 @@ class InputViewController: UIViewController {
     }
 
     func insert(firstName: String, lastName: String, email: String, address: String, phone: String, notes:String, db: OpaquePointer) {
-        let insertSQL = "INSERT INTO Courses(FirstName, LastName, Email, Address, Phone) VALUES (?,?,?,?)"
+        let insertSQL = "INSERT INTO contacts(FirstName, LastName, Email, Address, Phone, Note) VALUES (?,?,?,?,?,?)"
         var insertQuery: OpaquePointer? = nil
         var insertMsg = ""
 
@@ -186,13 +180,15 @@ func readDB(db: OpaquePointer) -> [Contact] {
 
         while (sqlite3_step(selectQuery) == SQLITE_ROW) {
 
-            let firstName = String(cString: sqlite3_column_text(selectQuery, 0))
-            let lastName = String(cString: sqlite3_column_text(selectQuery, 1))
-            let email = String(cString: sqlite3_column_text(selectQuery, 2))
-            let address = String(cString: sqlite3_column_text(selectQuery, 3))
-            let phone = String(cString: sqlite3_column_text(selectQuery, 4))
+            let contactID = Int(sqlite3_column_int(selectQuery, 0))
+            let firstName = String(cString: sqlite3_column_text(selectQuery, 1))
+            let lastName = String(cString: sqlite3_column_text(selectQuery, 2))
+            let email = String(cString: sqlite3_column_text(selectQuery, 3))
+            let address = String(cString: sqlite3_column_text(selectQuery, 4))
+            let phone = String(cString: sqlite3_column_text(selectQuery, 5))
+            let notes = String(cString: sqlite3_column_text(selectQuery, 6))
 
-            contactList.append(Contact(fname: firstName, lname: lastName,email:email, address: address, phone: phone))
+            contactList.append(Contact(contactID:contactID, fname: firstName, lname: lastName,email:email, address: address, phone: phone, notes:notes))
         }
 
     } else {
@@ -207,18 +203,22 @@ func readDB(db: OpaquePointer) -> [Contact] {
 
 class Contact {
     
+    var cID: Int
     var cfirstName: String
     var clastName: String
     var cemail: String
     var caddress: String
     var cphone: String
+    var cnotes: String
     
-    init(fname:String, lname:String, email:String, address:String, phone:String){
+    init(contactID:Int, fname:String, lname:String, email:String, address:String, phone:String, notes:String){
+        cID = contactID
         cfirstName = fname
         clastName = lname
         cemail = email
         caddress = address
         cphone = phone
+        cnotes = notes
     }
 }
 

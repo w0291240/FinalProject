@@ -1,36 +1,49 @@
 //
-//  TableViewController.swift
+//  ContactDetailViewController.swift
 //  FinalProject
 //
-//  Created by Jesse Crocker on 2026-03-22.
+//  Created by Jesse Crocker on 2026-03-31.
 //
 
 import UIKit
 import SQLite3
 import Foundation
 
-class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ContactDetailViewController: UIViewController {
     var contactList: [Contact] = []
     
-
-    @IBOutlet weak var tableView: UITableView!
     
-    //using viewWillAppear to reload the database when the tab is opened
-    override func viewWillAppear(_ animated:Bool) {
-        super.viewWillAppear(animated)
-
+    @IBOutlet weak var detailContactID: UILabel!
+    @IBOutlet weak var detailFirstName: UILabel!
+    @IBOutlet weak var detailLastName: UILabel!
+    @IBOutlet weak var detailEmail: UILabel!
+    @IBOutlet weak var detailAddress: UILabel!
+    @IBOutlet weak var detailPhone: UILabel!
+    @IBOutlet weak var detailNotes: UITextView!
+    
+    var contactID: Int = 0;
+    var contactFirstName: String = "";
+    var contactLastName: String = "";
+    var contactEmail: String = "";
+    var contactAddress: String = "";
+    var contactPhone: String = "";
+    var contactNotes: String = "";
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         let database = openDatabase();
         contactList = readDB(db:database!);
-        tableView.dataSource = self;
-        tableView.delegate = self;
-        tableView.reloadData();
-        
-        
+
+        detailContactID.text = String(contactID);
+        detailFirstName.text = contactFirstName;
+        detailLastName.text = contactLastName;
+        detailEmail.text = contactEmail;
+        detailAddress.text = contactAddress;
+        detailPhone.text = contactPhone;
+        detailNotes.text = contactNotes;
     }
     
-
-    
-
     func openDatabase()-> OpaquePointer? {
         let dbFile = "Contacts_DB"
         let dbExt = "db"
@@ -102,44 +115,23 @@ func readDB(db: OpaquePointer) -> [Contact] {
 
     return contactList
 }
-    
     var selectContact: Int = 0;
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactList.count;
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let contactCell = tableView.dequeueReusableCell(withIdentifier: "cellOne", for: indexPath) as! ContactTableViewCell
-        
-        let contact = contactList[indexPath.row];
-        
-        
-        contactCell.contactName.text = "\(contact.cfirstName) \(contact.clastName)";
-        return contactCell;
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        selectContact = indexPath.row;
-        performSegue(withIdentifier: "detailSegue", sender: self)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "detailSegue") {
-            let contactDetailVC = segue.destination as! ContactDetailViewController
+        if (segue.identifier == "editSegue") {
+            let contactEditVC = segue.destination as! ContactEditViewController
             
-            let contact = contactList[selectContact]
+//            let contact = contactList[selectContact]
             
-            contactDetailVC.contactID = contact.cID;
-            contactDetailVC.contactFirstName = contact.cfirstName
-            contactDetailVC.contactLastName = contact.clastName
-            contactDetailVC.contactEmail = contact.cemail
-            contactDetailVC.contactAddress = contact.caddress
-            contactDetailVC.contactPhone = contact.cphone
-            contactDetailVC.contactNotes = contact.cnotes
+            contactEditVC.contactID = contactID
+            contactEditVC.contactFirstName = contactFirstName
+            contactEditVC.contactLastName = contactLastName
+            contactEditVC.contactEmail = contactEmail
+            contactEditVC.contactAddress = contactAddress
+            contactEditVC.contactPhone = contactPhone
+            contactEditVC.contactNotes = contactNotes
         }
     }
 
+
 }
-
-

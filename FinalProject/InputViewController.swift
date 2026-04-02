@@ -76,6 +76,7 @@ class InputViewController: UIViewController {
         let clearButton = UIAlertAction(title: "Clear", style: .destructive) { (action) in
             self.clearFields();
         }
+        
         controller.addAction(cancelButton)
         controller.addAction(clearButton)
         self.present(controller, animated: true)

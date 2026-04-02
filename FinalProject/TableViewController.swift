@@ -74,7 +74,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 func readDB(db: OpaquePointer) -> [Contact] {
 
-    let selectSQL = "SELECT * FROM contacts"
+    let selectSQL = "SELECT * FROM contacts ORDER BY LastName COLLATE NOCASE ASC"
     
     var selectQuery: OpaquePointer? = nil
     var contactList:[Contact] = []

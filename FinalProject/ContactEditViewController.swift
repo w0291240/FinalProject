@@ -49,7 +49,13 @@ class ContactEditViewController: UIViewController {
     @IBAction func btnUpdatePressed(_ sender: UIButton) {
         if let db = openDatabase() {
             updateContact(db: db)
+            
         }
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func navBack() {
+        navigationController?.popViewController(animated: true)
     }
     
     func updateContact(db: OpaquePointer) {
@@ -95,7 +101,8 @@ class ContactEditViewController: UIViewController {
 
         // Alert user
         let alert = UIAlertController(title: "Update", message: updateMsg, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        alert.addAction(UIAlertAction(title: "OK", style: .default)  { (action) in
+            self.navBack(); })
         self.present(alert, animated: true)
     }
     

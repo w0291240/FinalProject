@@ -29,19 +29,83 @@ class ContactDetailViewController: UIViewController {
     var contactPhone: String = "";
     var contactNotes: String = "";
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated:Bool) {
+        super.viewWillAppear(animated)
         
-        let database = openDatabase();
-        contactList = readDB(db:database!);
+//        let database = openDatabase();
+        if let db = openDatabase(),
+           let updatedContact = getContactByID(db: db, id: contactID) {
+            
+            detailContactID.text = String(updatedContact.cID)
+            detailFirstName.text = updatedContact.cfirstName
+            detailLastName.text = updatedContact.clastName
+            detailEmail.text = updatedContact.cemail
+            detailAddress.text = updatedContact.caddress
+            detailPhone.text = updatedContact.cphone
+            detailNotes.text = updatedContact.cnotes
+        }
+    
+    }
+    @IBAction func btnClosePressed(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func screenPressed(_ sender: UITapGestureRecognizer) {
+        detailNotes.resignFirstResponder();
+    }
+    
+    @IBAction func btnSaveNotePressed(_ sender: Any) {
+        if let db = openDatabase() {
+            updateNote(db: db);
 
-        detailContactID.text = String(contactID);
-        detailFirstName.text = contactFirstName;
-        detailLastName.text = contactLastName;
-        detailEmail.text = contactEmail;
-        detailAddress.text = contactAddress;
-        detailPhone.text = contactPhone;
-        detailNotes.text = contactNotes;
+        }
+    }
+    
+    
+    
+    func updateNote(db: OpaquePointer) {
+        
+        let updateSQL = """
+        UPDATE contacts
+        SET Note = ?
+        WHERE ContactID = ?
+        """
+        
+        var updateQuery: OpaquePointer? = nil
+        var updateMsg = ""
+        if sqlite3_prepare_v2(db, updateSQL, -1, &updateQuery, nil) == SQLITE_OK {
+            
+
+
+            sqlite3_bind_text(updateQuery, 1, (detailNotes.text as NSString).utf8String, -1, nil)
+
+            
+            sqlite3_bind_int(updateQuery, 2, Int32(contactID))
+            
+
+            if sqlite3_step(updateQuery) == SQLITE_DONE {
+                updateMsg = "Update Successful"
+                print("Update success")
+            } else {
+                let errmsg = String(cString: sqlite3_errmsg(db))
+                updateMsg = "Update Failed: \(errmsg)"
+                print("Update failed: \(errmsg)")
+            }
+            
+        } else {
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            updateMsg = "Prepare Failed: \(errmsg)"
+            print("Prepare failed: \(errmsg)")
+        }
+
+        // Clean up
+        sqlite3_finalize(updateQuery)
+
+        // Alert user
+        let alert = UIAlertController(title: "Update", message: updateMsg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
+        resignFirstResponder()
     }
     
     func openDatabase()-> OpaquePointer? {
@@ -82,8 +146,80 @@ class ContactDetailViewController: UIViewController {
         }
         
     }
+    
+    func deleteContactByID(db:OpaquePointer, id: Int) -> Contact? {
+        let deleteQuery = "DELETE * FROM contacts WHERE ContactID = ?"
+        var statement: OpaquePointer? = nil
+        
+        var deleteMsg = "Are you sure you want to delete this contact?"
+        
+        if sqlite3_prepare_v2(db, deleteQuery, -1, &statement, nil) == SQLITE_OK {
+            
+            sqlite3_bind_int(statement, 1, Int32(id))
+            
+           
+            
+            if sqlite3_step(deleteQuery) == SQLITE_DONE {
+                deleteMsg = "Delete Successful"
+                print("Update success")
+            } else {
+                let errmsg = String(cString: sqlite3_errmsg(db))
+                deleteMsg = "Update Failed: \(errmsg)"
+                print("Update failed: \(errmsg)")
+            }
+            
+        } else {
+            let errmsg = String(cString: sqlite3_errmsg(db))
+            deleteMsg = "Prepare Failed: \(errmsg)"
+            print("Prepare failed: \(errmsg)")
+        }
+        
+        sqlite3_finalize(statement)
+            
+            let alert = UIAlertController(title: "Update", message: updateMsg, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true)
+            resignFirstResponder()
+            
+        
+    }
 
-   
+    func getContactByID(db: OpaquePointer, id: Int) -> Contact? {
+        
+        let query = "SELECT * FROM contacts WHERE ContactID = ?"
+        var statement: OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            
+            sqlite3_bind_int(statement, 1, Int32(id))
+            
+            if sqlite3_step(statement) == SQLITE_ROW {
+                
+                let contactID = Int(sqlite3_column_int(statement, 0))
+                let firstName = String(cString: sqlite3_column_text(statement, 1))
+                let lastName = String(cString: sqlite3_column_text(statement, 2))
+                let email = String(cString: sqlite3_column_text(statement, 3))
+                let address = String(cString: sqlite3_column_text(statement, 4))
+                let phone = String(cString: sqlite3_column_text(statement, 5))
+                let notes = String(cString: sqlite3_column_text(statement, 6))
+                
+                sqlite3_finalize(statement)
+                
+                return Contact(
+                    contactID: contactID,
+                    fname: firstName,
+                    lname: lastName,
+                    email: email,
+                    address: address,
+                    phone: phone,
+                    notes: notes
+                )
+            }
+        }
+        
+        sqlite3_finalize(statement)
+        return nil
+    }
 
 func readDB(db: OpaquePointer) -> [Contact] {
 

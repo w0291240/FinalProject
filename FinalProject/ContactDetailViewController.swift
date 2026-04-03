@@ -46,8 +46,15 @@ class ContactDetailViewController: UIViewController {
         }
     
     }
-    @IBAction func btnClosePressed(_ sender: UIButton) {
+    
+    
+    func navBack() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func btnClosePressed(_ sender: UIButton) {
+        navBack();
     }
     
     @IBAction func screenPressed(_ sender: UITapGestureRecognizer) {
@@ -61,6 +68,14 @@ class ContactDetailViewController: UIViewController {
         }
     }
     
+    @IBAction func btnDeletePressed(_ sender: Any) {
+        if let db = openDatabase() {
+            deleteContactByID(db: db, id: contactID );
+        }
+    }
+    
+
+
     
     
     func updateNote(db: OpaquePointer) {
@@ -98,10 +113,10 @@ class ContactDetailViewController: UIViewController {
             print("Prepare failed: \(errmsg)")
         }
 
-        // Clean up
+
         sqlite3_finalize(updateQuery)
 
-        // Alert user
+        
         let alert = UIAlertController(title: "Update", message: updateMsg, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alert, animated: true)
@@ -147,42 +162,55 @@ class ContactDetailViewController: UIViewController {
         
     }
     
-    func deleteContactByID(db:OpaquePointer, id: Int) -> Contact? {
-        let deleteQuery = "DELETE * FROM contacts WHERE ContactID = ?"
-        var statement: OpaquePointer? = nil
+    func deleteContactByID(db:OpaquePointer, id: Int){
         
-        var deleteMsg = "Are you sure you want to delete this contact?"
+        let deleteConfirm = "Are you sure you want to delete this contact? This action is permanent."
         
-        if sqlite3_prepare_v2(db, deleteQuery, -1, &statement, nil) == SQLITE_OK {
+        let alertPre = UIAlertController(title: "Delete", message: deleteConfirm, preferredStyle: .alert)
+        alertPre.addAction(UIAlertAction(title: "Delete", style: .destructive){
+            (action) in let deleteQuery = "DELETE FROM contacts WHERE ContactID = ?"
+            var statement: OpaquePointer? = nil
             
-            sqlite3_bind_int(statement, 1, Int32(id))
+            var deleteMsg = ""
             
-           
-            
-            if sqlite3_step(deleteQuery) == SQLITE_DONE {
-                deleteMsg = "Delete Successful"
-                print("Update success")
+            if sqlite3_prepare_v2(db, deleteQuery, -1, &statement, nil) == SQLITE_OK {
+                
+                sqlite3_bind_int(statement, 1, Int32(id))
+                
+                
+                
+                if sqlite3_step(statement) == SQLITE_DONE {
+                    deleteMsg = "Delete Successful"
+                    print("Update success")
+                } else {
+                    let errmsg = String(cString: sqlite3_errmsg(db))
+                    deleteMsg = "Delete Failed: \(errmsg)"
+                    print(deleteMsg)
+                }
+                
             } else {
                 let errmsg = String(cString: sqlite3_errmsg(db))
-                deleteMsg = "Update Failed: \(errmsg)"
-                print("Update failed: \(errmsg)")
+                deleteMsg = "Prepare Failed: \(errmsg)"
+                print("Prepare failed: \(errmsg)")
             }
             
-        } else {
-            let errmsg = String(cString: sqlite3_errmsg(db))
-            deleteMsg = "Prepare Failed: \(errmsg)"
-            print("Prepare failed: \(errmsg)")
-        }
-        
-        sqlite3_finalize(statement)
+            sqlite3_finalize(statement)
             
-            let alert = UIAlertController(title: "Update", message: updateMsg, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            let alert = UIAlertController(title: "Delete", message: deleteMsg, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default)  {
+                (action) in
+                self.navBack();
+            })
             self.present(alert, animated: true)
-            resignFirstResponder()
+            self.resignFirstResponder()
+        })
+        alertPre.addAction(UIAlertAction(title: "Cancel", style: .default))
+        self.present(alertPre, animated: true)
+        resignFirstResponder()
             
-        
     }
+
+    
 
     func getContactByID(db: OpaquePointer, id: Int) -> Contact? {
         

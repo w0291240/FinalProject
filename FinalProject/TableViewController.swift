@@ -139,7 +139,4 @@ func readDB(db: OpaquePointer) -> [Contact] {
             contactDetailVC.contactNotes = contact.cnotes
         }
     }
-
 }
-
-

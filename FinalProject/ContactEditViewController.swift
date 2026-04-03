@@ -53,6 +53,13 @@ class ContactEditViewController: UIViewController {
         }
         navigationController?.popViewController(animated: true)
     }
+    @IBAction func btnClearPressed(_ sender: Any) {
+        tfFirstNameEdit.text = "";
+        tfLastNameEdit.text = "";
+        tfEmailEdit.text = "";
+        tfAddressEdit.text = "";
+        tfPhoneEdit.text = "";
+    }
     
     func navBack() {
         navigationController?.popViewController(animated: true)
@@ -96,10 +103,10 @@ class ContactEditViewController: UIViewController {
             print("Prepare failed: \(errmsg)")
         }
 
-        // Clean up
+
         sqlite3_finalize(updateQuery)
 
-        // Alert user
+
         let alert = UIAlertController(title: "Update", message: updateMsg, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default)  { (action) in
             self.navBack(); })

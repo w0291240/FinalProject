@@ -31,9 +31,50 @@ class InputViewController: UIViewController {
         tvNotes.resignFirstResponder();
     }
     
+    //found this validation solution online - stack overflow answer
+    func validateEmail(enteredEmail: String) -> Bool {
+
+        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+        return emailPredicate.evaluate(with: enteredEmail)
+
+    }
+    
+    //found this validation online as well
+    func validatePhoneNumber(enteredPhone: String) -> Bool {
+        let regEx = "^[0-9+()\\-\\s]{7,20}$"
+
+            let phoneCheck = NSPredicate(format: "SELF MATCHES[c] %@", regEx)
+            return phoneCheck.evaluate(with: enteredPhone)
+        }
+    
+    
     @IBAction func btnSave(_ sender: UIButton) {
         let saveMsg = "Save Contact?"
         
+        let isEmailValid = validateEmail(enteredEmail: tfEmail.text ?? "")
+        let isPhoneValid = validatePhoneNumber(enteredPhone: tfPhone.text ?? "")
+
+
+        tfEmail.backgroundColor = .white
+        tfPhone.backgroundColor = .white
+
+        if !isEmailValid && !isPhoneValid {
+            tfEmail.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+            tfPhone.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+            return
+        }
+
+        if !isPhoneValid {
+            tfPhone.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+            return
+        }
+
+        if !isEmailValid {
+            tfEmail.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+            return
+        }
+
         let controller = UIAlertController(title: "Save", message: saveMsg, preferredStyle: .alert)
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
         let saveButton = UIAlertAction(title: "Save", style: .default) { (action) in
@@ -63,6 +104,8 @@ class InputViewController: UIViewController {
         tfAddress.text = ""
         tfPhone.text = ""
         tvNotes.text = ""
+        tfEmail.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        tfPhone.backgroundColor = UIColor(red:0, green:0, blue: 0, alpha: 1)
     }
 
     
@@ -160,12 +203,7 @@ class InputViewController: UIViewController {
         controller.addAction(actionButton)
         self.present(controller, animated: true)
 
-        tfFirstName.text = ""
-        tfLastName.text = ""
-        tfEmail.text = ""
-        tfAddress.text = ""
-        tfPhone.text = ""
-        tvNotes.text = ""
+        clearFields();
     }
 
 }

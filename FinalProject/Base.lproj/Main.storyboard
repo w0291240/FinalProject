@@ -197,7 +197,7 @@
         <!--Credits-->
         <scene sceneID="32O-TT-YQB">
             <objects>
-                <viewController id="5bw-r8-BXy" userLabel="Credits" sceneMemberID="viewController">
+                <viewController id="5bw-r8-BXy" userLabel="Credits" customClass="CreditsViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Eb2-BV-Oeu">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -212,8 +212,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MOBI3001 - March 28th, 2026" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUb-hd-QT8">
-                                <rect key="frame" x="103" y="514" width="234" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MOBI3001" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUb-hd-QT8">
+                                <rect key="frame" x="179.66666666666666" y="514" width="80.999999999999972" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="March 28th, 2026" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLp-o5-mD3" userLabel="lblDate">
+                                <rect key="frame" x="151" y="543" width="138" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -223,12 +229,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="WUb-hd-QT8" firstAttribute="top" secondItem="Bok-Ib-dsQ" secondAttribute="bottom" constant="15" id="342-2v-F1B"/>
+                            <constraint firstItem="yLp-o5-mD3" firstAttribute="top" secondItem="WUb-hd-QT8" secondAttribute="bottom" constant="8" symbolic="YES" id="Kqy-yL-HWw"/>
                             <constraint firstItem="Bok-Ib-dsQ" firstAttribute="centerY" secondItem="Eb2-BV-Oeu" secondAttribute="centerY" id="Vio-T5-crH"/>
                             <constraint firstItem="WUb-hd-QT8" firstAttribute="centerX" secondItem="Eb2-BV-Oeu" secondAttribute="centerX" id="Wnu-z3-LH9"/>
+                            <constraint firstItem="yLp-o5-mD3" firstAttribute="centerX" secondItem="Eb2-BV-Oeu" secondAttribute="centerX" id="e8V-HN-7Gh"/>
                             <constraint firstItem="Bok-Ib-dsQ" firstAttribute="centerX" secondItem="Eb2-BV-Oeu" secondAttribute="centerX" id="jYq-n1-VNd"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="About" image="info.circle.fill" id="0zM-8u-XjR" userLabel="Credits"/>
+                    <connections>
+                        <outlet property="lblDate" destination="yLp-o5-mD3" id="4fs-o0-KJ9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tBV-RI-mXC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

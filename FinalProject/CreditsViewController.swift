@@ -8,10 +8,15 @@
 import UIKit
 
 class CreditsViewController: UIViewController {
-
+    @IBOutlet weak var lblDate: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
 
+        lblDate.text = formatter.string(from: Date())
         // Do any additional setup after loading the view.
     }
     

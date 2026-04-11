@@ -104,8 +104,8 @@ class InputViewController: UIViewController {
         tfAddress.text = ""
         tfPhone.text = ""
         tvNotes.text = ""
-        tfEmail.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        tfPhone.backgroundColor = UIColor(red:0, green:0, blue: 0, alpha: 1)
+        tfEmail.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        tfPhone.backgroundColor = UIColor(red:1, green:1, blue: 1, alpha: 1)
     }
 
     

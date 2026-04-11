@@ -37,6 +37,25 @@ class ContactEditViewController: UIViewController {
         tfPhoneEdit.text = contactPhone;
         tvNotesEdit.text = contactNotes;
     }
+    
+    //found this validation solution online - stack overflow answer
+    func validateEmail(enteredEmail: String) -> Bool {
+
+        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+        return emailPredicate.evaluate(with: enteredEmail)
+
+    }
+    
+    //found this validation online as well
+    func validatePhoneNumber(enteredPhone: String) -> Bool {
+        let regEx = "^[0-9+()\\-\\s]{7,20}$"
+
+            let phoneCheck = NSPredicate(format: "SELF MATCHES[c] %@", regEx)
+            return phoneCheck.evaluate(with: enteredPhone)
+        }
+    
+    
     @IBAction func screenPressed(_ sender: Any) {
         tfFirstNameEdit.resignFirstResponder()
         tfLastNameEdit.resignFirstResponder()
@@ -47,6 +66,30 @@ class ContactEditViewController: UIViewController {
     }
     
     @IBAction func btnUpdatePressed(_ sender: UIButton) {
+        
+        let isEmailValid = validateEmail(enteredEmail: tfEmailEdit.text ?? "")
+        let isPhoneValid = validatePhoneNumber(enteredPhone: tfPhoneEdit.text ?? "")
+
+
+        tfEmailEdit.backgroundColor = .white
+        tfPhoneEdit.backgroundColor = .white
+
+        if !isEmailValid && !isPhoneValid {
+            tfEmailEdit.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+            tfPhoneEdit.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+            return
+        }
+
+        if !isPhoneValid {
+            tfPhoneEdit.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+            return
+        }
+
+        if !isEmailValid {
+            tfEmailEdit.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+            return
+        }
+        
         if let db = openDatabase() {
             updateContact(db: db)
             
@@ -59,6 +102,19 @@ class ContactEditViewController: UIViewController {
         tfEmailEdit.text = "";
         tfAddressEdit.text = "";
         tfPhoneEdit.text = "";
+    }
+    
+    func clearFields() {
+       
+            tfFirstNameEdit.text = ""
+            tfLastNameEdit.text = ""
+            tfEmailEdit.text = ""
+            tfAddressEdit.text = ""
+            tfPhoneEdit.text = ""
+            tvNotesEdit.text = ""
+            tfEmailEdit.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+            tfPhoneEdit.backgroundColor = UIColor(red:1, green:1, blue: 1, alpha: 1)
+        
     }
     
     func navBack() {
